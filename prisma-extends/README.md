@@ -7,27 +7,31 @@
 - デフォルトの `findMany` は `deletedAt: null` でスコープされる
 - `include` を使った関連取得でもデフォルトスコープが効く
 - 例外的に `prisma.withDeleted()` を使うと削除済みも取得できる
+- `findUnique` / `findFirst` / `count` / `create` / `update` / `delete` が壊れていない
 
 ## 主要ファイル
 
 - `prisma/schema.prisma`
 - `scripts/prisma-client.ts`
+- `scripts/soft-delete-extension.ts`
+- `scripts/scenario.ts`
 - `scripts/seed.ts`
-- `scripts/verify.ts`
+- `tests/soft-delete-extension.test.ts`
 
 ## 実行手順
 
 ```bash
 pnpm install
 pnpm prisma:generate
+pnpm test
 pnpm check
 ```
 
 `pnpm check` では以下を順番に実行します。
 
 1. スキーマ反映 (`prisma db push`)
-2. シード投入
-3. 検証スクリプト実行
+2. テスト実行
+3. TypeScript 型チェック
 
 ## API イメージ
 

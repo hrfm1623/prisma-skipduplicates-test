@@ -9,7 +9,9 @@
     "db:reset": "prisma db push --force-reset",
     "seed": "tsx scripts/seed.ts",
     "verify": "tsx scripts/verify.ts",
-    "check": "pnpm run prisma:generate && pnpm run db:push && pnpm run seed && pnpm run verify"
+    "test": "tsx --test tests/**/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "check": "pnpm run prisma:generate && pnpm run db:push && pnpm run test && pnpm run typecheck"
   },
   "dependencies": {
     "@prisma/client": "^6.0.0"
